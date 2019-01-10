@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <ul>
+        <li>
+          <router-link to="/form">form</router-link>
+        </li>
+      </ul>
     </div>
     <router-view/>
   </div>
@@ -10,7 +13,7 @@
 
 <style lang="less">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -18,6 +21,9 @@
 }
 #nav {
   padding: 30px;
+  ul, li {
+    list-style: none;
+  }
   a {
     font-weight: bold;
     color: #2c3e50;
