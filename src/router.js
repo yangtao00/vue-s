@@ -10,15 +10,25 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      redirect: '/form',
+      redirect: '/nav',
+    },
+    {
+      path: '/nav',
+      name: 'nav',
+      component: () => import('./views/nav.vue')
+    },
+    {
+      path: '/test',
+      name: 'test',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/test.vue')
     },
     {
       path: '/form',
       name: 'form',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/form.vue')
+      component: () => import('./views/form.vue')
     }
   ]
 })

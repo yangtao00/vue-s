@@ -1,3 +1,14 @@
+function broadcast(componentName, eventName, params) {
+  this.$children.forEach(child => {
+    const name = child.$options.name;
+
+    if (name === componentName) {
+      child.$emit.apply(child, [eventName].concat(params));
+    } else {
+      broadcast.apply(child, [componentName, eventName].concat([params]));
+    }
+  });
+}
 export default {
   methods: {
     dispatch(componentName, eventName, params) {
@@ -12,15 +23,7 @@ export default {
       if (parent) parent.$emit.apply(parent, [...[eventName], ...[params]]);
     },
     broadcast(componentName, eventName, params) {
-      this.$children.forEach(child => {
-        const name = child.$options.name;
-
-        if (name === componentName) {
-          child.$emit.apply(child, [eventName].concat(params));
-        } else {
-          broadcast.apply(child, [componentName, eventName].concat([params]));
-        }
-      });
+      broadcast.call(this, componentName, eventName, params);
     }
   }
 }

@@ -1,33 +1,61 @@
 <template>
   <div>
-    <button type="button" @click="handleClickToChild">点击向子级广播消息</button>
-    <componet-b></componet-b>
-    <componet-a></componet-a>
+    <h4>表单校验</h4>
+    <s-form ref="form" :model="formValidate" :rules="rulesValidate">
+      <s-form-item label="姓名" prop="name">
+        <s-input v-model="formValidate.name"></s-input>
+      </s-form-item>
+      <s-form-item label="邮箱" prop="email">
+        <s-input v-model="formValidate.email"></s-input>
+      </s-form-item>
+      <div>
+        <button type="button" @click="handleSubmit">提交</button>
+        <button type="button" @click="handleReset">重置</button>
+      </div>
+    </s-form>
   </div>
 </template>
 <script>
-import Emitter from '@/mixins/emitter';
-import componetA from '@/components/A';
-import componetB from '@/components/B';
+import { sForm, sFormItem, sInput } from '@/components/Form';
 
 export default {
-  name: 'Form',
   components: {
-    componetA,
-    componetB
+    sForm,
+    sFormItem,
+    sInput
   },
-  mixins: [Emitter],
-  created() {
-    this.$on('on-msg', this.showMsg);
+  data() {
+    return {
+      formValidate: {
+        name: '',
+        email: ''
+      },
+      rulesValidate: {
+        name: [
+          {
+            required: true, message: '请输入姓名', trigger: 'blur'
+          }
+        ],
+        email: [
+          {
+            required: true, message: '请输入邮箱', trigger: 'blur'
+          },
+          {
+            type: 'email', message: '邮箱格式错误', trigger: 'blur'
+          }
+        ]
+      }
+    }
   },
   methods: {
-    handleClickToChild() {
-      this.broadcast('componentB', 'on-msg', '这条信息来自父组件B');
+    handleSubmit() {
+      this.$refs.form.validate(valid => {
+        alert(valid ? 'success' : 'error');
+      })
     },
-    showMsg(msg) {
-      alert(msg);
+    handleReset() {
+      this.$refs.form.resetFields();
     }
   }
-};
+}
 </script>
-
