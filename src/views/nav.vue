@@ -15,11 +15,14 @@
 </template>
 <script>
 export default {
-  name: 'App',
+  name: 'Nav',
   data() {
     return {
       routes: this.$router.options.routes
     };
+  },
+  created() {
+    console.log(this.$options.name);
   }
 };
 </script>

@@ -1,20 +1,23 @@
 <template>
   <div>
-    <button type="button" @click="handleClickToChild">点击向子级广播消息</button>
-    <componet-b></componet-b>
+    <p>
+      <button type="button" @click="handleClickToChild">向子组件广播消息</button>
+    </p>
+    <p>
+      <button type="button" @click="handleInvokeChildEvent">调用子组件上的方法</button>
+    </p>
     <componet-a></componet-a>
   </div>
 </template>
 <script>
 import Emitter from '@/mixins/emitter';
+import { findComponentDownward } from '@/utils/assist';
 import componetA from '@/components/A';
-import componetB from '@/components/B';
 
 export default {
-  name: 'Form',
+  name: 'Test',
   components: {
-    componetA,
-    componetB
+    componetA
   },
   mixins: [Emitter],
   created() {
@@ -22,10 +25,21 @@ export default {
   },
   methods: {
     handleClickToChild() {
-      this.broadcast('componentB', 'on-msg', '这条信息来自父组件B');
+      this.broadcast('componentA', 'on-msg', '这条信息来自父组件Test');
+    },
+    handleInvokeChildEvent() {
+      const childC = findComponentDownward(this, 'componentA');
+      if (childC) {
+        childC.clMsg();
+      }
     },
     showMsg(msg) {
       alert(msg);
+    },
+    clMsg() {
+      alert(
+        '这条信息来自Test组件，在A组件中通过findComponentUpward工具方法触发'
+      );
     }
   }
 };
