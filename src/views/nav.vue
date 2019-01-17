@@ -20,9 +20,6 @@ export default {
     return {
       routes: this.$router.options.routes
     };
-  },
-  created() {
-    console.log(this.$options.name);
   }
 };
 </script>
