@@ -26,6 +26,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/test.vue')
     },
     {
+      path: '/checkbox',
+      name: 'checkbox',
+      component: () => import('./views/checkbox.vue')
+    },
+    {
       path: '/form',
       name: 'form',
       component: () => import('./views/form.vue')

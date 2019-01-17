@@ -16,7 +16,8 @@
   </div>
 </template>
 <script>
-import { sForm, sFormItem, sInput } from '@/components/Form';
+import { sForm, sFormItem } from '@/components/Form';
+import sInput from '@/components/Input/input';
 
 export default {
   components: {
