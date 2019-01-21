@@ -34,6 +34,11 @@ export default new Router({
       path: '/form',
       name: 'form',
       component: () => import('./views/form.vue')
+    },
+    {
+      path: '/extend&mount',
+      name: 'extend&mount',
+      component: () => import('./views/extend&mount.vue')
     }
   ]
 })
