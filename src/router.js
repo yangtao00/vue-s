@@ -39,6 +39,11 @@ export default new Router({
       path: '/extend&mount',
       name: 'extend&mount',
       component: () => import('./views/extend&mount.vue')
+    },
+    {
+      path: '/dynamic_component',
+      name: 'dynamic_component',
+      component: () => import('./views/display.vue')
     }
   ]
 })
