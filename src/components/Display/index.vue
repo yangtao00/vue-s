@@ -57,7 +57,7 @@ export default {
         }
       }
     },
-    destoryCode() {
+    destroyCode() {
       // 删除css
       const $target = document.getElementById(this.id);
       if ($target) $target.parentNode.removeChild($target);
@@ -65,20 +65,20 @@ export default {
       // 删除动态组件
       if (this.component) {
         this.$refs.display.removeChild(this.component.$el);
-        this.component.$destory();
+        this.component.$destroy();
         this.component = null;
       }
     }
   },
   beforeDestroy() {
-    this.destoryCode();
+    this.destroyCode();
   },
   mounted() {
     this.renderCode();
   },
   watch: {
     code() {
-      this.destoryCode();
+      this.destroyCode();
       this.renderCode();
     }
   },
