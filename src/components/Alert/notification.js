@@ -11,9 +11,8 @@ Alert.newInstance = properties => {
       });
     }
   });
-  const component = new Instance().$mount();
+  const component = Instance.$mount();
   document.body.appendChild(component.$el);
-
   const alert = Instance.$children[0];
 
   return {
@@ -25,3 +24,4 @@ Alert.newInstance = properties => {
     }
   }
 }
+export default Alert;

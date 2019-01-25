@@ -44,6 +44,11 @@ export default new Router({
       path: '/dynamic_component',
       name: 'dynamic_component',
       component: () => import('./views/display.vue')
+    },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: () => import('./views/alert.vue')
     }
   ]
 })
