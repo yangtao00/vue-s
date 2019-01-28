@@ -18,12 +18,12 @@ export default new Router({
       component: () => import('./views/nav.vue')
     },
     {
-      path: '/test',
-      name: 'test',
+      path: '/component-communication',
+      name: 'component-communication',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/test.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/component-communication.vue')
     },
     {
       path: '/checkbox',
@@ -49,6 +49,11 @@ export default new Router({
       path: '/alert',
       name: 'alert',
       component: () => import('./views/alert.vue')
+    },
+    {
+      path: '/render-demo',
+      name: 'render-demo',
+      component: () => import('./views/demo.vue')
     }
   ]
 })
