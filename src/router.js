@@ -54,6 +54,11 @@ export default new Router({
       path: '/render-demo',
       name: 'render-demo',
       component: () => import('./views/demo.vue')
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: () => import('./views/table.vue')
     }
   ]
 })
