@@ -41,9 +41,9 @@ export default new Router({
       component: () => import('./views/extend&mount.vue')
     },
     {
-      path: '/dynamic_component',
-      name: 'dynamic_component',
-      component: () => import('./views/display.vue')
+      path: '/dynamic_render',
+      name: 'dynamic_render',
+      component: () => import('./views/dynamic-render.vue')
     },
     {
       path: '/alert',
@@ -56,9 +56,28 @@ export default new Router({
       component: () => import('./views/demo.vue')
     },
     {
-      path: '/table',
-      name: 'table',
-      component: () => import('./views/table.vue')
+      path: '/table-render',
+      name: 'table-render',
+      component: () => import('./views/table-render.vue')
+    },
+    {
+      path: '/table-slot',
+      name: 'table-slot',
+      component: () => import('./views/table-slot.vue')
+    },
+    {
+      path: '/table-render2',
+      name: 'table-render2',
+      component: () => import('./views/table-render2.vue')
+    },
+    {
+      path: '/table-render3',
+      name: 'table-render3',
+      component: () => import('./views/table-render3.vue')
+    },{
+      path: '/dynamic-component',
+      name: 'dynamic-component',
+      component: () => import('./views/dynamic-component.vue')
     }
   ]
 })
