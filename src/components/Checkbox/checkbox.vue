@@ -4,17 +4,12 @@
       <input
         v-if="group"
         type="checkbox"
+        :disabled="disabled"
         :value="label"
         v-model="model"
-        @change="handleChange">
-      <input
-        v-else
-        type="checkbox"
-        :disabled="disabled"
-        :value="currVal"
         @change="handleChange"
-        :checked="currVal"
       >
+      <input v-else type="checkbox" :disabled="disabled" :checked="currVal" @change="handleChange">
     </span>
     <slot></slot>
   </label>
@@ -40,11 +35,11 @@ export default {
     },
     trueValue: {
       type: [Number, String, Boolean],
-      defalut: true
+      default: true
     },
     falseValue: {
       type: [Number, String, Boolean],
-      defalut: false
+      default: false
     }
   },
   data() {
@@ -52,8 +47,17 @@ export default {
       currVal: this.value,
       group: false,
       model: [],
-      parent: ''
+      parent: null
     };
+  },
+  mounted() {
+    this.parent = findComponentUpward(this, 'sCheckboxGroup');
+    if (this.parent) this.group = true;
+    if (this.group) {
+      this.parent.updateModel(true);
+    } else {
+      this.updateModel();
+    }
   },
   methods: {
     handleChange(e) {
@@ -64,7 +68,7 @@ export default {
       this.$emit('input', value);
 
       // 如果是组合模式
-      if (this.parent) {
+      if (this.group) {
         this.parent.change(this.model);
       } else {
         this.$emit('on-change', value);
@@ -83,16 +87,7 @@ export default {
         throw 'value should be trueValue or falseValue';
       }
     }
-  },
-  mounted() {
-    this.parent = findComponentUpward(this, 'sCheckboxGroup');
-    if (this.parent) this.group = true;
-    if (this.group) {
-      this.parent.updateModel(true);
-    } else {
-      this.updateModel();
-    }
-  },
+  }
 };
 </script>
 

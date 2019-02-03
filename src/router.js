@@ -74,10 +74,16 @@ export default new Router({
       path: '/table-render3',
       name: 'table-render3',
       component: () => import('./views/table-render3.vue')
-    },{
+    },
+    {
       path: '/dynamic-component',
       name: 'dynamic-component',
       component: () => import('./views/dynamic-component.vue')
+    },
+    {
+      path: '/tree',
+      name: 'tree',
+      component: () => import('./views/tree.vue')
     }
   ]
 })
