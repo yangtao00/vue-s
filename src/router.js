@@ -81,6 +81,11 @@ export default new Router({
       component: () => import('./views/dynamic-component.vue')
     },
     {
+      path: '/renderless-component',
+      name: 'renderless-component',
+      component: () => import('./views/renderless-component.vue')
+    },
+    {
       path: '/tree',
       name: 'tree',
       component: () => import('./views/tree.vue')
