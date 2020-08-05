@@ -1,5 +1,7 @@
 # vue-componets-study
 
+# 学习如何写vue组件
+
 ## Project setup
 ```
 npm install
